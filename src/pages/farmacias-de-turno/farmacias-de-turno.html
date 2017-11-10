@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>farmaciasDeTurno</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <ion-grid>
+      <ion-row>
+          <ion-col>
+            <agm-map 
+              [latitude]="ubicacion.lat"
+              [longitude]="ubicacion.lng"
+              [zoom]="12"
+              [zoomControl]="true"
+              [streetViewControl]="true"
+              [disableDefaultUI]="true"> 
+              <agm-marker 
+              [latitude]="ubicacion.lat" 
+              [longitude]="ubicacion.lng"
+              [iconUrl]="'/assets/icon/marker-green.png'">
+              <agm-info-window>¡¡¡Aca Toy!!!</agm-info-window>
+            </agm-marker> 
+              <agm-marker *ngFor="let marker of markers; let i = index"
+              
+              [latitude]="marker.lat" 
+                [longitude]="marker.lng"
+                [iconUrl]="'/assets/icon/marker-blue.png'"
+                [openInfoWindow]="true"> 
+                
+                <agm-info-window>{{marker.nombre}}<br>{{marker.direccion}}</agm-info-window>
+              </agm-marker> 
+              
+            </agm-map>
+          </ion-col>
+        </ion-row>
+  </ion-grid>
+
+</ion-content>
